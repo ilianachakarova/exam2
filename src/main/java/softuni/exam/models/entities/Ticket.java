@@ -41,7 +41,7 @@ public class Ticket extends BaseEntity {
     public void setTakeoff(LocalDateTime takeoff) {
         this.takeoff = takeoff;
     }
-    @ManyToOne(targetEntity = Town.class)
+    @ManyToOne(targetEntity = Town.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "from_town_id", referencedColumnName = "id")
     public Town getFromTown() {
         return fromTown;
@@ -50,7 +50,7 @@ public class Ticket extends BaseEntity {
     public void setFromTown(Town fromTown) {
         this.fromTown = fromTown;
     }
-    @ManyToOne(targetEntity = Passenger.class)
+    @ManyToOne(targetEntity = Passenger.class,fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "passenger_id", referencedColumnName = "id")
     public Passenger getPassenger() {
         return passenger;
@@ -59,7 +59,7 @@ public class Ticket extends BaseEntity {
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
     }
-    @ManyToOne(targetEntity = Plane.class)
+    @ManyToOne(targetEntity = Plane.class,fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "plane_id", referencedColumnName = "id")
     public Plane getPlane() {
         return plane;
@@ -68,7 +68,7 @@ public class Ticket extends BaseEntity {
     public void setPlane(Plane plane) {
         this.plane = plane;
     }
-    @ManyToOne(targetEntity = Town.class)
+    @ManyToOne(targetEntity = Town.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "to_town_id", referencedColumnName = "id")
     public Town getToTown() {
         return toTown;
